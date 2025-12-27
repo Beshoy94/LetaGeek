@@ -408,7 +408,8 @@
 
         // Auto-set today's date (editable for tech, locked for client)
         const sysDate = new Date();
-        const dateString = sysDate.toISOString().split('T')[0];
+        // Use local YYYY-MM-DD instead of UTC to fix evening timezone offset
+        const dateString = new Date(sysDate.getTime() - (sysDate.getTimezoneOffset() * 60000)).toISOString().split('T')[0];
         document.getElementById('currentDate').value = dateString;
         document.getElementById('sigDate').value = sysDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
 
@@ -480,7 +481,8 @@
         if (getRaw('phone')) document.getElementById('fPhone').value = getRaw('phone');
         if (getRaw('tv')) document.getElementById('fTVInfo').value = getRaw('tv');
 
-        const dateVal = getRaw('date') || new Date().toISOString().split('T')[0];
+        const localDefault = new Date(new Date().getTime() - (new Date().getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+        const dateVal = getRaw('date') || localDefault;
         document.getElementById('currentDate').value = dateVal;
         document.getElementById('displayDate').textContent = dateVal;
 
@@ -664,7 +666,6 @@
                 document.getElementById('modalMessage').innerHTML = `
                     The invoice has been sent.<br><br>
                     <strong>Check your Email:</strong> You will receive a confirmation email with the PDF link and database status shortly.<br>
-                    (Browser sync feedback is disabled for local files).
                 `;
                 overlay.querySelector('button').style.display = 'block';
             } catch (err) {
