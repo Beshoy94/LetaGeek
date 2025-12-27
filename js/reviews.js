@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const reviewsTrack = document.getElementById('reviews-track');
+    const prevBtn = document.getElementById('reviews-prev');
+    const nextBtn = document.getElementById('reviews-next');
 
     if (!reviewsTrack) return;
 
@@ -14,6 +16,52 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         return stars;
+    }
+
+    // Initialize Carousel Logic
+    function initCarousel() {
+        const scrollAmount = 350 + 30; // Card width (350) + gap (30)
+
+        // Manual Navigation
+        nextBtn?.addEventListener('click', () => {
+            reviewsTrack.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            resetAutoScroll();
+        });
+
+        prevBtn?.addEventListener('click', () => {
+            reviewsTrack.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            resetAutoScroll();
+        });
+
+        // Auto Scroll
+        let autoScrollTimer;
+
+        function startAutoScroll() {
+            autoScrollTimer = setInterval(() => {
+                // If we've reached the end (approx), scroll back to start
+                if (reviewsTrack.scrollLeft + reviewsTrack.clientWidth >= reviewsTrack.scrollWidth - 10) {
+                    reviewsTrack.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    reviewsTrack.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            }, 5000); // 5 seconds
+        }
+
+        function resetAutoScroll() {
+            clearInterval(autoScrollTimer);
+            startAutoScroll();
+        }
+
+        // Pause on hover/touch
+        reviewsTrack.addEventListener('mouseenter', () => clearInterval(autoScrollTimer));
+        reviewsTrack.addEventListener('touchstart', () => clearInterval(autoScrollTimer));
+
+        // Resume on leave
+        reviewsTrack.addEventListener('mouseleave', () => startAutoScroll());
+        reviewsTrack.addEventListener('touchend', () => startAutoScroll());
+
+        // Start initially
+        startAutoScroll();
     }
 
     // Fetch reviews from JSON
@@ -55,6 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 reviewsTrack.appendChild(card);
             });
+
+            // Initialize carousel after content is loaded
+            initCarousel();
         })
         .catch(error => {
             console.error('Error loading reviews:', error);
