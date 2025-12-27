@@ -1440,8 +1440,21 @@ footer {
 
     .btn-booking {
         margin-top: 0;
-        width: auto;
-        padding: 15px 30px;
+        width: 100%;
+        /* Full width for easier tapping */
+        padding: 15px 20px;
+    }
+
+    .sidebar-footer {
+        flex-direction: column !important;
+        /* Stack buttons on mobile */
+        width: 100%;
+        gap: 10px;
+    }
+
+    .sidebar-footer .btn {
+        width: 100%;
+        margin: 0;
     }
 
     .hero {
@@ -1501,7 +1514,20 @@ footer {
     }
 
     nav ul {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+        padding: 15px 0;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        margin-top: 10px;
+    }
+
+    nav a {
+        display: block;
+        padding: 10px;
+        font-size: 1.1rem;
     }
 
     .footer-container {
