@@ -1,30 +1,65 @@
 [
     {
-        "author_name": "Sarah Jenkins",
+        "author_name": "Gloria Sheu",
         "rating": 5,
-        "text": "Besho did an amazing job mounting our 75-inch TV. He was professional, on time, and the cord concealment looks perfect. Highly recommend LetaGeek!",
-        "profile_photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
-        "relative_time_description": "a week ago"
+        "text": "We contacted LetaGeek and they were very quick to respond and helped us set up an appointment the next day. The technician was professional and and friendly! He helped us mount our 2 TVs under an hour, greatly exceeding our expectations…we highly recommend their services!",
+        "profile_photo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Gloria%20Sheu",
+        "relative_time_description": "a year ago"
     },
     {
-        "author_name": "Michael Rodriguez",
+        "author_name": "Kevin Quan",
         "rating": 5,
-        "text": "Excellent service! We had a complex smart home setup with cameras and a smart doorbell. Everything works flawlessly now. Great prices too.",
-        "profile_photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael",
-        "relative_time_description": "2 weeks ago"
+        "text": "This was an amazing experience. Beshoy was friendly, informative, and very good at his job. He was explaining what he was doing every step of the way and made sure we were satisfied with the end result. You think mounting a tv is straight forward but there’s a lot that goes into it. If I have any other future tv to mount, I know exactly who to ask. Thanks Beshoy!",
+        "profile_photo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Kevin%20Quan",
+        "relative_time_description": "a year ago"
     },
     {
-        "author_name": "David Wilson",
+        "author_name": "BelovedDaughter Christ",
         "rating": 5,
-        "text": "Best TV mounting service in Rancho Cucamonga. Very clean work and super friendly. I will definitely be calling them again for my next project.",
-        "profile_photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=David",
-        "relative_time_description": "1 month ago"
+        "text": "I recently hired LetaGeek to mount my TV, and they totally nailed it. Great price compared to Geeksquad. Professional, great work, and super friendly. Highly recommended for a stress-free mount!",
+        "profile_photo_url": "https://api.dicebear.com/7.x/initials/svg?seed=BelovedDaughter%20Christ",
+        "relative_time_description": "11 months ago"
     },
     {
-        "author_name": "Amanda Lee",
+        "author_name": "Annie Rivera",
         "rating": 5,
-        "text": "Quick response and same-day service! They handled my TV mount and soundbar setup perfectly. No messy wires anywhere!",
-        "profile_photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Amanda",
-        "relative_time_description": "3 weeks ago"
+        "text": "Beshoy is super friendly and very professional! He was thorough and gave explanations and recommendations every step of the way! I’m super satisfied and happy with his service! I highly recommend him and LetAGeek!",
+        "profile_photo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Annie%20Rivera",
+        "relative_time_description": "11 months ago"
+    },
+    {
+        "author_name": "Giovanni Barrera",
+        "rating": 5,
+        "text": "Beshoy did an amazing job mounting our tv! He even gave us some tips on making our next tv purchase when we need it. Good price as well. I will definitely use Leta Geek again in the future.",
+        "profile_photo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Giovanni%20Barrera",
+        "relative_time_description": "11 months ago"
+    },
+    {
+        "author_name": "April Castorillo",
+        "rating": 5,
+        "text": "Beshoy did a great job mounting my TV. I could tell he knew what he was doing with his explanations and options he provided me. He was quick, efficient, and respectful",
+        "profile_photo_url": "https://api.dicebear.com/7.x/initials/svg?seed=April%20Castorillo",
+        "relative_time_description": "a year ago"
+    },
+    {
+        "author_name": "Ashley Harris",
+        "rating": 5,
+        "text": "The tech that arrived to mount my tv was awesome. He was professional , had great communication about my options for placement. He was done in less than 30 minutes. I will definitely be recommending him to my friends and family !",
+        "profile_photo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Ashley%20Harris",
+        "relative_time_description": "a year ago"
+    },
+    {
+        "author_name": "Denise Jenkins",
+        "rating": 5,
+        "text": "I had such a great experience. Not only was he very flexible with day and time but he was prompt and courteous. The work was done perfectly & very fast...I strongly recommend!",
+        "profile_photo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Denise%20Jenkins",
+        "relative_time_description": "a year ago"
+    },
+    {
+        "author_name": "Press Pressley",
+        "rating": 5,
+        "text": "The gentleman was on time and very professional. Install took maybe 20 minutes. Center and level and he made sure everything turned on before he left. I called a few places and he was one of two companies who were able to come same day.",
+        "profile_photo_url": "https://api.dicebear.com/7.x/initials/svg?seed=Press%20Pressley",
+        "relative_time_description": "4 years ago"
     }
 ]
