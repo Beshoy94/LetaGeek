@@ -1,0 +1,30 @@
+[
+    {
+        "author_name": "Sarah Jenkins",
+        "rating": 5,
+        "text": "Besho did an amazing job mounting our 75-inch TV. He was professional, on time, and the cord concealment looks perfect. Highly recommend LetaGeek!",
+        "profile_photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+        "relative_time_description": "a week ago"
+    },
+    {
+        "author_name": "Michael Rodriguez",
+        "rating": 5,
+        "text": "Excellent service! We had a complex smart home setup with cameras and a smart doorbell. Everything works flawlessly now. Great prices too.",
+        "profile_photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Michael",
+        "relative_time_description": "2 weeks ago"
+    },
+    {
+        "author_name": "David Wilson",
+        "rating": 5,
+        "text": "Best TV mounting service in Rancho Cucamonga. Very clean work and super friendly. I will definitely be calling them again for my next project.",
+        "profile_photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=David",
+        "relative_time_description": "1 month ago"
+    },
+    {
+        "author_name": "Amanda Lee",
+        "rating": 5,
+        "text": "Quick response and same-day service! They handled my TV mount and soundbar setup perfectly. No messy wires anywhere!",
+        "profile_photo_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Amanda",
+        "relative_time_description": "3 weeks ago"
+    }
+]

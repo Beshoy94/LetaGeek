@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Mounting Service | Instant Quote & Booking | LetaGeek</title>
+    <meta name="description"
+        content="Professional TV mounting service. Get an instant quote for wall mounting, wire concealment, and soundbar installation. Expert local installers. Book online today.">
+
+    <!-- Google Analytics 4 (GA4) - Paste your Measurement ID below -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E89EDL5MR2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-E89EDL5MR2'); // <-- Replace "G-YOUR_ID_HERE" with your actual ID
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- FAQ Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How much does TV mounting cost?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our TV mounting services start at $99 for TVs up to 55 inches. Larger TVs, special brackets, and cord concealment options are priced accordingly. Use our instant quote calculator for exact pricing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can you mount a TV on brick or stone?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! We are experts at mounting TVs on brick, stone, concrete, and other masonry surfaces. There is an additional charge for fireplace/brick installations due to the specialized tools required."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you hide the TV cables in the wall?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely. We offer in-wall cord concealment for a clean, wire-free look. If in-wall installation is not possible, we can also install an external cord cover that is painted to match your wall."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <!-- LocalBusiness Schema Markup for Local SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "LetaGeek TV Mounting",
+        "image": "https://letageek.com/images/logo.png", 
+        "description": "Professional TV mounting and home theater installation services. Expert wire concealment and audio setup.",
+        "sameAs": [
+            "https://share.google/DS4Xa9SKx2DF9xyPu"
+        ],
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Rancho Cucamonga",
+            "addressRegion": "CA",
+            "addressCountry": "US"
+        },
+        "areaServed": [
+            "Rancho Cucamonga",
+            "Fontana",
+            "Upland",
+            "Eastvale",
+            "Corona",
+            "Ontario",
+            "Inland Empire"
+        ],
+        "telephone": "+15555555555",
+        "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              "opens": "08:00",
+              "closes": "20:00"
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="LetaGeek Logo">
+            </a>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tv-mounting.html">TV Mounting</a></li>
+                    <li><a href="smart-home.html">Smart Home</a></li>
+                    <li><a href="wifi-support.html">WiFi & Support</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="header-cta">
+                    <a href="tel:9092577499" class="phone"><i class="fas fa-phone-alt"></i> (909) 257-7499</a>
+                    <a href="javascript:showBookingForm()" class="btn btn-primary"
+                        style="padding: 8px 20px; font-size: 0.85rem;">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section style="padding-top: 30px; padding-bottom: 20px; text-align: center;">
+            <div class="section-title">
+                <h1>Instant TV Mounting Quote</h1>
+                <p>Select your options below for an instant price estimate and booking.</p>
+            </div>
+        </section>
+
+        <section style="padding-top: 0;">
+            <div class="calc-grid">
+                <div class="calc-main-content">
+                    <!-- Step 1: TV Size -->
+                    <div class="calc-card" id="step-size">
+                        <div class="step-title">
+                            <span class="step-number">1</span>
+                            <h3>What is your TV size?</h3>
+                        </div>
+                        <div class="option-grid">
+                            <div class="option-card size-card" data-size="up-to-55">
+                                <div class="card-icon-wrapper">
+                                    <i class="fas fa-tv" style="font-size: 2rem; color: var(--primary);"></i>
+                                </div>
+                                <h4>Up to 55"</h4>
+                                <p class="price-tag">Base $99</p>
+                            </div>
+                            <div class="option-card size-card" data-size="56-75">
+                                <div class="card-icon-wrapper">
+                                    <i class="fas fa-tv" style="font-size: 2.8rem; color: var(--primary);"></i>
+                                </div>
+                                <h4>56" - 75"</h4>
+                                <p class="price-tag">Base $149</p>
+                            </div>
+                            <div class="option-card size-card" data-size="over-75">
+                                <div class="card-icon-wrapper">
+                                    <i class="fas fa-tv" style="font-size: 3.5rem; color: var(--primary);"></i>
+                                </div>
+                                <h4>Over 75"</h4>
+                                <p class="price-tag">Base $189</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Bracket Type -->
+                    <div class="calc-card" id="step-bracket">
+                        <div class="step-title">
+                            <span class="step-number">2</span>
+                            <h3>What kind of bracket?</h3>
+                        </div>
+                        <div class="option-grid">
+                            <div class="option-card bracket-card" data-bracket="own">
+                                <div class="card-icon-wrapper">
+                                    <img src="assets/bracket-none.png" alt="Own Bracket" class="bracket-img"
+                                        style="margin-bottom: 0;">
+                                </div>
+                                <h4>I have my own</h4>
+                                <p>Installation only</p>
+                                <p class="price-tag">+$0</p>
+                            </div>
+                            <div class="option-card bracket-card" data-bracket="tilting">
+                                <div class="card-icon-wrapper">
+                                    <img src="assets/26-tilt.svg" alt="Tilting Bracket" class="bracket-img"
+                                        style="margin-bottom: 0;">
+                                </div>
+                                <h4>Tilting/Fixed</h4>
+                                <p>Bracket included</p>
+                                <p class="price-tag">+$40</p>
+                            </div>
+                            <div class="option-card bracket-card" data-bracket="full-motion">
+                                <div class="card-icon-wrapper">
+                                    <img src="assets/34-swivel-tilt.svg" alt="Full-Motion Bracket" class="bracket-img"
+                                        style="margin-bottom: 0;">
+                                </div>
+                                <h4>Full-Motion</h4>
+                                <p>Bracket included</p>
+                                <p class="price-tag">+$60</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Wall Type -->
+                    <div class="calc-card" id="step-wall">
+                        <div class="step-title">
+                            <span class="step-number">3</span>
+                            <h3>What is the wall/surface type?</h3>
+                        </div>
+                        <div class="option-grid">
+                            <div class="option-card wall-card" data-wall="drywall-no-fp">
+                                <div class="card-icon-wrapper">
+                                    <i class="fas fa-border-all" style="font-size: 2rem; color: var(--primary);"></i>
+                                </div>
+                                <h4>Drywall</h4>
+                                <p>(no fireplace)</p>
+                            </div>
+                            <div class="option-card wall-card" data-wall="drywall-above-fp">
+                                <div class="card-icon-wrapper">
+                                    <i class="fas fa-fire" style="font-size: 2rem; color: var(--primary);"></i>
+                                </div>
+                                <h4>Drywall</h4>
+                                <p>(above fireplace)</p>
+                            </div>
+                            <div class="option-card wall-card" data-wall="plaster">
+                                <div class="card-icon-wrapper">
+                                    <i class="fas fa-hammer" style="font-size: 2rem; color: var(--primary);"></i>
+                                </div>
+                                <h4>Plaster</h4>
+                            </div>
+                            <div class="option-card wall-card" data-wall="other">
+                                <div class="card-icon-wrapper">
+                                    <i class="fas fa-th-large" style="font-size: 2rem; color: var(--primary);"></i>
+                                </div>
+                                <h4>Other Surface</h4>
+                                <p>Brick/Stone/ Wood-panel</p>
+                            </div>
+                            <div class="option-card wall-card" data-wall="commercial">
+                                <div class="card-icon-wrapper">
+                                    <i class="fas fa-building" style="font-size: 2rem; color: var(--primary);"></i>
+                                </div>
+                                <h4>Commercial Building</h4>
+                                <p>(Metal Studs)</p>
+                            </div>
+                            <div class="option-card wall-card" data-wall="not-sure">
+                                <div class="card-icon-wrapper">
+                                    <i class="fas fa-question-circle"
+                                        style="font-size: 2rem; color: var(--primary);"></i>
+                                </div>
+                                <h4>I don't know</h4>
+                                <p>We'll check</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Add-ons -->
+                    <div class="calc-card" id="step-addons">
+                        <div class="step-title">
+                            <span class="step-number">4</span>
+                            <h3>Any Add-ons?</h3>
+                        </div>
+                        <div class="addon-list">
+                            <div class="addon-item" data-addon="concealment">
+                                <div style="display: flex; align-items: center; gap: 15px;">
+                                    <i class="fas fa-shield-alt" style="font-size: 1.2rem; color: var(--primary);"></i>
+                                    <div>
+                                        <h4>In-Wall Concealment</h4>
+                                        <p>Hide all wires inside
+                                            wall
+                                        </p>
+                                    </div>
+                                </div>
+                                <span class="price-tag">+$159</span>
+                            </div>
+                            <div class="addon-item" data-addon="cord-cover">
+                                <div style="display: flex; align-items: center; gap: 15px;">
+                                    <img src="assets/cord-cover.svg" alt="Cord Cover"
+                                        style="width: 30px; height: 30px;">
+                                    <div>
+                                        <h4>External Cord Cover</h4>
+                                        <p>Paintable plastic
+                                            track
+                                            (removable adhesive)</p>
+                                    </div>
+                                </div>
+                                <span class="price-tag">+$39</span>
+                            </div>
+                            <div class="addon-item" data-addon="soundbar">
+                                <div style="display: flex; align-items: center; gap: 15px;">
+                                    <img src="assets/soundbar.svg" alt="Soundbar" style="width: 30px; height: 30px;">
+                                    <div>
+                                        <h4>Soundbar Mounting</h4>
+                                        <p>Under TV installation
+                                        </p>
+                                    </div>
+                                </div>
+                                <span class="price-tag">+$49</span>
+                            </div>
+                            <div class="addon-item" data-addon="hdmi">
+                                <div style="display: flex; align-items: center; gap: 15px;">
+                                    <img src="assets/cables.svg" alt="Cables" style="width: 30px; height: 30px;">
+                                    <div>
+                                        <h4>HDMI/Power Cords</h4>
+                                        <p>Longer premium cables
+                                        </p>
+                                    </div>
+                                </div>
+                                <span class="price-tag">+$15</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Sidebar for Total & Breakdown -->
+                <div class="calc-sidebar">
+                    <div class="sidebar-card">
+                        <div class="sidebar-header"
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3 style="margin-bottom: 0;">Estimate Breakdown</h3>
+                            <div id="clear-quote-container"></div>
+                        </div>
+                        <div id="price-breakdown">
+                            <!-- Populated by JS -->
+                        </div>
+                        <div class="total-summary">
+                            <p>Combined Total Estimate</p>
+                            <div class="total-price">$0</div>
+                        </div>
+                        <div class="sidebar-footer"
+                            style="display: flex; flex-direction: row; gap: 15px; flex-shrink: 0;">
+                            <button id="add-tv-btn" class="btn btn-outline"
+                                style="opacity: 1; pointer-events: auto; cursor: pointer;">+ Add Another TV</button>
+                            <button id="next-step-btn" class="btn btn-primary btn-booking"
+                                style="margin-top: 0; opacity: 1; pointer-events: auto; cursor: pointer;">Next:
+                                Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/footer-loader.js"></script>
+    <script src="js/email-service.js"></script>
+    <script src="js/calculator.js"></script>
+    <!-- 📈 LIGHTWEIGHT CLICK TRACKING -->
+    <script>
+        document.addEventListener('click', (e) => {
+            const trackable = e.target.closest('button, .service-card, .add-on-card, .btn-primary, .btn-secondary');
+            if (trackable) {
+                const label = trackable.innerText?.trim() || trackable.getAttribute('aria-label') || trackable.id || 'Unknown Element';
+                const type = trackable.tagName.toLowerCase();
+                console.log(`[LetaGeek Analytics] Clicked ${type}: "${label}" at ${new Date().toLocaleTimeString()}`);
+
+                // If you ever add Google Analytics (GA4), you would add this line here:
+                // gtag('event', 'click', { 'event_label': label, 'element_type': type });
+            }
+        });
+    </script>
+</body>
+
+</html>

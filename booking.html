@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Booking | LetaGeek</title>
+    <meta name="description" content="Complete your TV mounting quote request by providing your contact details.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="LetaGeek Logo">
+            </a>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tv-mounting.html">TV Mounting</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="header-cta">
+                    <a href="tel:9092577499" class="phone"><i class="fas fa-phone-alt"></i> (909) 257-7499</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section style="padding-top: 20px; padding-bottom: 5px; text-align: center;">
+            <div class="section-title">
+                <h1>Complete Your Quote Request</h1>
+                <p>You're just one step away from professional TV mounting.</p>
+            </div>
+        </section>
+
+        <section style="padding-top: 0;">
+            <div class="calc-grid">
+                <div class="calc-main-content">
+                    <div class="calc-card">
+                        <div class="step-title booking-header">
+                            <h3 style="color: var(--primary);">Your Details</h3>
+                            <p>Please provide your contact information to finalize the quote.</p>
+                        </div>
+                        <form id="booking-form">
+                            <!-- Hidden fields populated by JS -->
+                            <input type="hidden" name="Total Estimate" id="estimated-price" value="">
+                            <input type="hidden" name="Quote Breakdown" id="selected-services" value="">
+
+                            <div class="contact-form" style="padding: 0; box-shadow: none; background: transparent;">
+                                <div class="option-grid" style="margin-bottom: 20px;">
+                                    <div class="form-field">
+                                        <label>Full Name*</label>
+                                        <input type="text" name="name" placeholder="John Doe" required>
+                                    </div>
+                                    <div class="form-field">
+                                        <label>Phone Number*</label>
+                                        <input type="tel" name="phone" placeholder="(909) 000-0000" required>
+                                    </div>
+                                </div>
+                                <div class="form-field">
+                                    <label>Email Address*</label>
+                                    <input type="email" name="email" placeholder="john@example.com" required>
+                                </div>
+                                <div class="form-field">
+                                    <label>Address (City)*</label>
+                                    <input type="text" name="city" placeholder="e.g. Rancho Cucamonga" required>
+                                </div>
+                                <div class="form-field">
+                                    <label>Upload Photos of Wall/TV (Optional - Max 7 photos, 10MB each)</label>
+                                    <input type="file" id="photo-upload" name="photos[]"
+                                        accept="image/png, image/jpeg, image/jpg, image/webp" multiple
+                                        style="padding: 10px; background: white; border-radius: 8px;">
+                                    <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 5px;">
+                                        (Hold <strong>Ctrl</strong> or <strong>Cmd</strong> to select multiple photos)
+                                    </p>
+                                </div>
+                                <div class="form-field">
+                                    <label>Additional Details (Optional)</label>
+                                    <textarea name="additional-info" rows="3"
+                                        placeholder="Tell us any extra info..."></textarea>
+                                </div>
+                                <button type="submit" id="submit-btn" class="btn btn-primary"
+                                    style="width: 100%; padding: 20px; font-size: 1.2rem; border-radius: 15px;">Send
+                                    Quote Request</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Sidebar for Total & Breakdown (Summary only) -->
+                <div class="calc-sidebar">
+                    <div class="sidebar-card">
+                        <div class="sidebar-header"
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3 style="margin-bottom: 0;">Quote Summary</h3>
+                            <div id="clear-quote-container"></div>
+                        </div>
+                        <div id="price-breakdown">
+                            <!-- Populated by JS -->
+                        </div>
+                        <div class="total-summary">
+                            <p>Combined Total</p>
+                            <div class="total-price">$0</div>
+                        </div>
+                        <div class="sidebar-footer" style="text-align: center; margin-top: 20px; flex-shrink: 0;">
+                            <a href="tv-mounting.html"
+                                style="color: var(--primary); font-size: 0.9rem; text-decoration: none;">
+                                <i class="fas fa-arrow-left"></i> Edit Selections
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 LetaGeek. All Rights Reserved. | Professional Tech Solutions</p>
+        </div>
+    </footer>
+
+    <script src="js/email-service.js"></script>
+    <script src="js/calculator.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Invoice | LetaGeek</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --auth-bg: #FFFFFF;
+            --auth-text: #000000;
+            --auth-border: #000000;
+        }
+
+        body.auth-page {
+            background: var(--auth-bg);
+            color: var(--auth-text);
+            font-family: 'Inter', sans-serif;
+            padding: 20px;
+            line-height: 1.4;
+        }
+
+        .auth-container {
+            max-width: 600px;
+            margin: 0 auto;
+            border: 3px solid var(--auth-border);
+            padding: 30px;
+            border-radius: 0;
+            /* Traditional paper look */
+        }
+
+        .auth-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--auth-border);
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+        }
+
+        .auth-header .logo-side {
+            text-align: left;
+        }
+
+        .auth-header img {
+            max-width: 180px;
+            height: auto;
+        }
+
+        .auth-header .info-side {
+            text-align: right;
+        }
+
+        .auth-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            margin: 0;
+            letter-spacing: -1.5px;
+            line-height: 0.9;
+            font-weight: 900;
+        }
+
+        .auth-header .subtitle {
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #333;
+            margin-top: 5px;
+            border-top: 1px solid #000;
+            padding-top: 5px;
+        }
+
+        .auth-header p {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section h3 {
+            background: var(--auth-text);
+            color: var(--auth-bg);
+            padding: 8px 15px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .input-group input[type="text"],
+        .input-group input[type="date"],
+        .input-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--auth-border);
+            font-size: 1.2rem;
+            border-radius: 0;
+            color: #000;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #eee;
+        }
+
+        .checkbox-item input {
+            width: 25px;
+            height: 25px;
+        }
+
+        .waiver-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            font-style: italic;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .signature-area {
+            border-top: 2px dashed var(--auth-border);
+            padding-top: 30px;
+            margin-top: 40px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--auth-text);
+            color: var(--auth-bg);
+            padding: 25px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary);
+        }
+
+        @media (max-width: 480px) {
+            .auth-container {
+                padding: 15px;
+                border-width: 2px;
+            }
+
+            .auth-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-header">
+            <div class="logo-side">
+                <div style="font-size: 2.2rem; font-weight: 900; letter-spacing: -1.5px; line-height: 1;">LetaGeek<span
+                        style="color: #00bcd4;">.</span></div>
+                <div class="subtitle">Digital Invoice & Service Form</div>
+            </div>
+            <div class="info-side">
+                <h1>INVOICE</h1>
+                <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #666; font-weight: 700;">REF: <span
+                        id="displayLid" style="color: #000;">N/A</span></p>
+                <p style="margin: 2px 0 0 0; font-size: 0.9rem; color: #666; font-weight: 700;">DATE: <span
+                        id="displayDate" style="color: #000;">YYYY-MM-DD</span></p>
+            </div>
+        </div>
+
+        <div id="techPanel"
+            style="background: #f0f7ff; border: 1px solid #0056b3; padding: 15px; margin-bottom: 20px; border-radius: 8px;">
+            <p style="margin: 0 0 10px 0; font-weight: 800; color: #0056b3;"><i class="fas fa-tools"></i> Tech Controls
+            </p>
+            <button type="button" class="btn-submit" id="genLinkBtn"
+                style="padding: 10px; font-size: 0.9rem; background: #0056b3; margin: 0 5px 0 0; width: auto; display: inline-block;">Generate
+                Link</button>
+            <button type="button" class="btn-submit" id="sendEmailBtn"
+                style="padding: 10px; font-size: 0.9rem; background: #28a745; margin: 0 5px 0 0; width: auto; display: inline-block;"><i
+                    class="fas fa-envelope"></i> Send Email</button>
+            <button type="button" class="btn-submit" id="sendSmsBtn"
+                style="padding: 10px; font-size: 0.9rem; background: #17a2b8; margin: 0; width: auto; display: inline-block;"><i
+                    class="fas fa-sms"></i> Send SMS</button>
+            <p id="linkFeedback"
+                style="display: none; font-size: 0.8rem; margin-top: 8px; color: green; font-weight: 700;">Action
+                completed!</p>
+        </div>
+
+        <form id="auth-form">
+            <div class="form-section">
+                <div class="input-group">
+                    <label>Amount Due ($):</label>
+                    <input type="text" name="Amount" id="fAmount" placeholder="0.00" required>
+                </div>
+                <div class="input-group">
+                    <label>Installer Name:</label>
+                    <input type="text" name="Installer_Name" id="fInstaller" required>
+                </div>
+                <div class="input-group">
+                    <label>Customer Name:</label>
+                    <input type="text" name="Customer_Name" id="fName" required>
+                </div>
+                <div class="input-group">
+                    <label>Customer Email:</label>
+                    <input type="email" name="Customer_Email" id="fEmail" placeholder="client@example.com">
+                </div>
+                <div class="input-group">
+                    <label>Customer Phone:</label>
+                    <input type="tel" name="Customer_Phone" id="fPhone" placeholder="555-0123">
+                </div>
+                <div class="input-group">
+                    <label>Lead ID (Reference):</label>
+                    <input type="text" name="Lead_ID" id="fLeadId" placeholder="LG-XXXX" readonly
+                        style="background: #eee;">
+                </div>
+                <div class="input-group">
+                    <label>TV Manufacture / Size:</label>
+                    <input type="text" name="TV_Info" id="fTVInfo" placeholder="e.g. Samsung 65-inch" required>
+                </div>
+                <div class="input-group">
+                    <label>Date of Service:</label>
+                    <input type="date" name="Service_Date" id="currentDate" required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Mounting Surface</h3>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="radio" name="Mount_Surface" value="Drywall/Wood" required> Drywall w/ Wood Studs
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="radio" name="Mount_Surface" value="Drywall/Metal"> Drywall w/ Metal Studs
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="radio" name="Mount_Surface" value="Brick/Concrete"> Brick / Concrete
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Pre-Mounting Checklist</h3>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="TV_Condition" id="fNew" value="New"> TV is NEW (in box)
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="TV_Working_Before" id="fWorkBefore" value="Working" required> I
+                        confirmed TV works BEFORE mounting
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="TV_Working_After" id="fWorkAfter" value="Working" required> I
+                        confirmed TV works AFTER mounting
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="Mounting_Confirmed" id="fLoc" value="Confirmed" required> I
+                        confirmed Height/Location with client
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Damage & Issues</h3>
+                <div class="input-group">
+                    <label>Prior TV Damage?</label>
+                    <div class="checkbox-group" style="grid-template-columns: 1fr 1fr; margin-bottom: 10px;">
+                        <label class="checkbox-item"><input type="radio" name="TV_Damage" value="No" checked> No</label>
+                        <label class="checkbox-item"><input type="radio" name="TV_Damage" value="Yes"> Yes</label>
+                    </div>
+                    <textarea name="TV_Damage_Details" id="fTVDamage" rows="2"
+                        placeholder="TV Damage details..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Prior Wall Damage?</label>
+                    <div class="checkbox-group" style="grid-template-columns: 1fr 1fr; margin-bottom: 10px;">
+                        <label class="checkbox-item"><input type="radio" name="Wall_Damage" value="No" checked>
+                            No</label>
+                        <label class="checkbox-item"><input type="radio" name="Wall_Damage" value="Yes"> Yes</label>
+                    </div>
+                    <textarea name="Wall_Damage_Details" id="fWallDamage" rows="2"
+                        placeholder="Wall Damage details..."></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Additional Services</h3>
+                <div class="input-group">
+                    <div class="checkbox-group" style="grid-template-columns: 1fr 1fr; margin-bottom: 10px;">
+                        <label class="checkbox-item"><input type="radio" name="Extra_Service" value="No" checked>
+                            No</label>
+                        <label class="checkbox-item"><input type="radio" name="Extra_Service" value="Yes"> Yes</label>
+                    </div>
+                    <textarea name="Extra_Details" id="fExtra" rows="2"
+                        placeholder="List additional services performed..."></textarea>
+                </div>
+            </div>
+
+            <div class="waiver-box" style="font-size: 0.9rem; line-height: 1.5; border-left: 4px solid #000;">
+                <strong>Service & Liability Acknowledgment:</strong><br>
+                I hereby acknowledge that the services provided have been performed to my full satisfaction.
+                I confirm that the installer has not caused any damage to the property, including but not limited to the
+                walls, electrical systems, or the TV/equipment itself, during the course of the installation.
+                Furthermore, I understand that any adjustments in height and/or placement requested after the original
+                confirmed installation are not part of the initial service agreement and may be subject to additional
+                service charges.
+            </div>
+
+            <div class="signature-area">
+                <div class="input-group">
+                    <label>Customer Signature:</label>
+                    <div id="signature-tabs" style="margin-bottom: 10px;">
+                        <button type="button" class="tab-btn active" onclick="switchSig('draw')">Draw</button>
+                        <button type="button" class="tab-btn" onclick="switchSig('type')">Type</button>
+                    </div>
+
+                    <div id="draw-container"
+                        style="border: 2px solid #000; background: #fff; height: 150px; position: relative;">
+                        <canvas id="sig-canvas" style="width: 100%; height: 100%; cursor: crosshair;"></canvas>
+                        <button type="button" id="clearBtn"
+                            style="position: absolute; top: 5px; right: 5px; background: #eee; border: 1px solid #ccc; padding: 5px; cursor: pointer;">Clear</button>
+                    </div>
+
+                    <div id="type-container" style="display: none;">
+                        <input type="text" name="Digital_Signature" id="fTypeSig" placeholder="Type Full Name">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Today's Date:</label>
+                    <input type="text" id="sigDate" readonly style="background: #eee;">
+                </div>
+                <p style="font-size: 0.8rem; opacity: 0.7;">By signing, you agree to the terms above.</p>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn">Sign & Submit Form</button>
+        </form>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div class="submission-overlay" id="submissionOverlay">
+        <div class="success-card">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 id="modalTitle">Sending...</h3>
+            <p id="modalMessage">Please wait while we record your authorization.</p>
+            <button class="btn btn-primary" style="display: none;"
+                onclick="document.getElementById('submissionOverlay').classList.remove('active')">Got it!</button>
+        </div>
+    </div>
+
+    <style>
+        .tab-btn {
+            padding: 8px 15px;
+            border: 1px solid #000;
+            background: #fff;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .tab-btn.active {
+            background: #000;
+            color: #fff;
+        }
+
+        .signature-area input[readonly] {
+            cursor: not-allowed;
+        }
+    </style>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const techPanel = document.getElementById('techPanel');
+        const form = document.getElementById('auth-form');
+        const canvas = document.getElementById('sig-canvas');
+        const ctx = canvas.getContext('2d');
+        let painting = false;
+
+        // Auto-set today's date (editable for tech, locked for client)
+        const sysDate = new Date();
+        const dateString = sysDate.toISOString().split('T')[0];
+        document.getElementById('currentDate').value = dateString;
+        document.getElementById('sigDate').value = sysDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+
+        // 1. SIGNATURE PAD LOGIC
+        function resizeCanvas() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function startPosition(e) {
+            painting = true;
+            draw(e);
+        }
+        function finishedPosition() {
+            painting = false;
+            ctx.beginPath();
+        }
+        function draw(e) {
+            if (!painting) return;
+            ctx.lineWidth = 3;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#000';
+
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+
+            ctx.lineTo(clientX - rect.left, clientY - rect.top);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(clientX - rect.left, clientY - rect.top);
+        }
+
+        canvas.addEventListener('mousedown', startPosition);
+        canvas.addEventListener('mouseup', finishedPosition);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startPosition(e); });
+        canvas.addEventListener('touchend', finishedPosition);
+        canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e); });
+
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+
+        function switchSig(mode) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            if (mode === 'draw') {
+                document.getElementById('draw-container').style.display = 'block';
+                document.getElementById('type-container').style.display = 'none';
+                document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+                document.getElementById('fTypeSig').required = false;
+            } else {
+                document.getElementById('draw-container').style.display = 'none';
+                document.getElementById('type-container').style.display = 'block';
+                document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+                document.getElementById('fTypeSig').required = true;
+            }
+        }
+
+        // 2. PRE-FILL LOGIC (Always runs if parameters exist)
+        const getRaw = (key) => urlParams.get(key) || '';
+
+        if (getRaw('amt')) document.getElementById('fAmount').value = getRaw('amt');
+        if (getRaw('inst')) document.getElementById('fInstaller').value = getRaw('inst');
+        if (getRaw('name')) document.getElementById('fName').value = getRaw('name');
+        if (getRaw('email')) document.getElementById('fEmail').value = getRaw('email');
+        if (getRaw('phone')) document.getElementById('fPhone').value = getRaw('phone');
+        if (getRaw('tv')) document.getElementById('fTVInfo').value = getRaw('tv');
+
+        const dateVal = getRaw('date') || new Date().toISOString().split('T')[0];
+        document.getElementById('currentDate').value = dateVal;
+        document.getElementById('displayDate').textContent = dateVal;
+
+        if (getRaw('lid')) {
+            const lid = getRaw('lid');
+            document.getElementById('fLeadId').value = lid;
+            document.getElementById('displayLid').textContent = lid;
+        }
+
+        if (getRaw('tvdmg')) document.getElementById('fTVDamage').value = getRaw('tvdmg');
+        if (getRaw('walldmg')) document.getElementById('fWallDamage').value = getRaw('walldmg');
+        if (getRaw('extra')) document.getElementById('fExtra').value = getRaw('extra');
+
+        // Radios/Checkboxes
+        const setChecked = (name, val) => {
+            if (!val) return;
+            const el = document.querySelector(`input[name="${name}"][value="${val}"]`);
+            if (el) el.checked = true;
+        };
+        setChecked('Mount_Surface', getRaw('surf'));
+        setChecked('TV_Damage', getRaw('hastvdmg'));
+        setChecked('Wall_Damage', getRaw('haswalldmg'));
+        setChecked('Extra_Service', getRaw('hasextra'));
+
+        if (getRaw('isnew') === 'true') document.getElementById('fNew').checked = true;
+        if (getRaw('iswork') === 'true') document.getElementById('fWorkBefore').checked = true;
+        if (getRaw('isworkpost') === 'true') document.getElementById('fWorkAfter').checked = true;
+        if (getRaw('isloc') === 'true') document.getElementById('fLoc').checked = true;
+
+        console.log("[LetaGeek] Form Data Loaded:", Object.fromEntries(urlParams.entries()));
+
+        // 3. READ-ONLY MODE & LOCKING (Only runs in Sign Mode)
+        if (urlParams.has('sign')) {
+            techPanel.style.display = 'none';
+
+            // LOCK EVERYTHING
+            form.querySelectorAll('input, textarea, select').forEach(el => {
+                if (el.name !== 'Digital_Signature' && el.id !== 'fTypeSig') {
+                    el.readOnly = true;
+                    el.style.pointerEvents = 'none';
+                    el.style.background = '#eee';
+                    if (el.type === 'radio' || el.type === 'checkbox') el.disabled = true;
+                }
+            });
+        }
+
+        // 3. GENERATE & SEND LOGIC
+        function getShareUrl() {
+            const params = new URLSearchParams();
+            params.set('sign', 'true');
+            params.set('amt', document.getElementById('fAmount').value);
+            params.set('inst', document.getElementById('fInstaller').value);
+            params.set('name', document.getElementById('fName').value);
+            params.set('email', document.getElementById('fEmail').value);
+            params.set('phone', document.getElementById('fPhone').value);
+            params.set('tv', document.getElementById('fTVInfo').value);
+            params.set('date', document.getElementById('currentDate').value);
+            params.set('lid', document.getElementById('fLeadId').value);
+            params.set('surf', document.querySelector('input[name="Mount_Surface"]:checked')?.value || '');
+            params.set('isnew', document.getElementById('fNew').checked);
+            params.set('iswork', document.getElementById('fWorkBefore').checked);
+            params.set('isworkpost', document.getElementById('fWorkAfter').checked);
+            params.set('isloc', document.getElementById('fLoc').checked);
+            params.set('hastvdmg', document.querySelector('input[name="TV_Damage"]:checked')?.value || 'No');
+            params.set('tvdmg', document.getElementById('fTVDamage').value);
+            params.set('haswalldmg', document.querySelector('input[name="Wall_Damage"]:checked')?.value || 'No');
+            params.set('walldmg', document.getElementById('fWallDamage').value);
+            params.set('hasextra', document.querySelector('input[name="Extra_Service"]:checked')?.value || 'No');
+            params.set('extra', document.getElementById('fExtra').value);
+
+            const baseUrl = window.location.href.split('?')[0];
+            return baseUrl + '?' + params.toString();
+        }
+
+        document.getElementById('genLinkBtn').addEventListener('click', () => {
+            const shareUrl = getShareUrl();
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                showFeedback("Link copied to clipboard!");
+            });
+        });
+
+        document.getElementById('sendEmailBtn').addEventListener('click', () => {
+            const email = document.getElementById('fEmail').value;
+            const name = document.getElementById('fName').value;
+            if (!email) { alert("Please enter a customer email first."); return; }
+
+            const shareUrl = getShareUrl();
+            const subject = encodeURIComponent("LetaGeek - Digital Invoice for " + name);
+            const body = encodeURIComponent("Hi " + name + ",\n\nPlease review and sign your digital invoice here: " + shareUrl + "\n\nThank you!");
+            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+            showFeedback("Opening Email client...");
+        });
+
+        document.getElementById('sendSmsBtn').addEventListener('click', () => {
+            const phone = document.getElementById('fPhone').value;
+            const name = document.getElementById('fName').value;
+            const shareUrl = getShareUrl();
+            const message = encodeURIComponent(`Hi ${name}, please sign your LetaGeek invoice here: ${shareUrl}`);
+
+            if (phone) {
+                window.location.href = `sms:${phone}?body=${message}`;
+            } else {
+                // If no phone, just copy message to clipboard
+                navigator.clipboard.writeText(`Hi ${name}, please sign your LetaGeek invoice here: ${shareUrl}`).then(() => {
+                    alert("No phone entered. Message copied to clipboard instead!");
+                });
+            }
+            showFeedback("Opening SMS...");
+        });
+
+        function showFeedback(msg) {
+            const feedback = document.getElementById('linkFeedback');
+            feedback.textContent = msg;
+            feedback.style.display = 'block';
+            setTimeout(() => feedback.style.display = 'none', 3000);
+        }
+
+        // 4. CLICK TRACKING (LITE)
+        document.querySelectorAll('button, input[type="submit"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const label = btn.innerText || btn.value || btn.id;
+                console.log(`[Tracking] Click: ${label} at ${new Date().toISOString()}`);
+                // In a real GA4 setup, you'd call gtag('event', 'click', { 'event_label': label });
+            });
+        });
+
+        // 5. SUBMISSION
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const overlay = document.getElementById('submissionOverlay');
+            const submitBtn = document.getElementById('submitBtn');
+
+            overlay.classList.add('active');
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+            const rawData = Object.fromEntries(formData.entries());
+
+            // Prepare signature (either image or text)
+            let signature = rawData.Digital_Signature;
+            if (document.getElementById('draw-container').style.display !== 'none') {
+                signature = canvas.toDataURL(); // Image data
+            }
+
+            const data = {
+                formType: 'auth',
+                amount: document.getElementById('fAmount').value,
+                installerName: document.getElementById('fInstaller').value,
+                customerName: document.getElementById('fName').value,
+                customerEmail: document.getElementById('fEmail').value,
+                customerPhone: document.getElementById('fPhone').value,
+                leadId: document.getElementById('fLeadId').value || 'New Job',
+                tvInfo: document.getElementById('fTVInfo').value,
+                serviceDate: document.getElementById('currentDate').value,
+                mountSurface: document.querySelector('input[name="Mount_Surface"]:checked')?.value || 'Standard',
+                checklist: {
+                    isNew: document.getElementById('fNew').checked ? 'Yes' : 'No',
+                    workBefore: document.getElementById('fWorkBefore').checked ? 'Yes' : 'No',
+                    workAfter: document.getElementById('fWorkAfter').checked ? 'Yes' : 'No',
+                    locationConfirmed: document.getElementById('fLoc').checked ? 'Yes' : 'No'
+                },
+                tvDamage: document.querySelector('input[name="TV_Damage"]:checked')?.value === 'Yes' ? document.getElementById('fTVDamage').value : 'No Damage',
+                wallDamage: document.querySelector('input[name="Wall_Damage"]:checked')?.value === 'Yes' ? document.getElementById('fWallDamage').value : 'No Damage',
+                extraService: document.querySelector('input[name="Extra_Service"]:checked')?.value === 'Yes' ? document.getElementById('fExtra').value : 'None',
+                signatureData: signature
+            };
+
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPY4A-akZ1Yn9cQ8UXY2Kke5oWUNG2s2MxB-oHWwnjs-t4t4fBZbZwMGU0qC0FdO6c/exec';
+
+            try {
+                // Using no-cors to ensure request succeeds from local file://
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                // Optimistic success UI
+                document.getElementById('modalTitle').textContent = 'Invoice Submitted';
+                document.getElementById('modalMessage').innerHTML = `
+                    The invoice has been sent.<br><br>
+                    <strong>Check your Email:</strong> You will receive a confirmation email with the PDF link and database status shortly.<br>
+                    (Browser sync feedback is disabled for local files).
+                `;
+                overlay.querySelector('button').style.display = 'block';
+            } catch (err) {
+                console.error(err);
+                document.getElementById('modalTitle').textContent = 'Transmission Error';
+                document.getElementById('modalMessage').textContent = 'We could not send the data. Please check your internet connection.';
+                overlay.querySelector('button').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>
