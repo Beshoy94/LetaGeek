@@ -208,6 +208,11 @@ nav a.active {
     gap: 35px;
 }
 
+/* Hamburger hidden on desktop */
+.hamburger {
+    display: none;
+}
+
 .social-links {
     display: flex;
     align-items: center;
@@ -1419,12 +1424,13 @@ footer {
     }
 
     .sidebar-card {
-        border-radius: 25px 25px 0 0;
-        padding: 20px 30px;
+        border-radius: 15px 15px 0 0;
+        padding: 12px 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 20px;
+        gap: 15px;
+        flex-wrap: nowrap;
     }
 
     .sidebar-card h3,
@@ -1436,25 +1442,42 @@ footer {
         margin-top: 0;
         padding-top: 0;
         border: none;
+        flex-shrink: 0;
+    }
+
+    .total-summary p {
+        font-size: 0.75rem;
+        margin-bottom: 2px;
+    }
+
+    .total-price {
+        font-size: 1.4rem;
     }
 
     .btn-booking {
         margin-top: 0;
-        width: 100%;
-        /* Full width for easier tapping */
-        padding: 15px 20px;
+        width: auto;
+        padding: 12px 20px;
+        font-size: 0.85rem;
     }
 
     .sidebar-footer {
-        flex-direction: column !important;
-        /* Stack buttons on mobile */
-        width: 100%;
-        gap: 10px;
+        flex-direction: row !important;
+        width: auto;
+        gap: 8px;
+        flex-shrink: 0;
     }
 
     .sidebar-footer .btn {
-        width: 100%;
+        width: auto;
         margin: 0;
+        padding: 10px 15px;
+        font-size: 0.8rem;
+    }
+
+    .sidebar-footer .btn-outline {
+        display: none;
+        /* Hide "Add Another TV" on mobile to simplify */
     }
 
     .hero {
@@ -1513,21 +1536,69 @@ footer {
         padding: 15px;
     }
 
-    nav ul {
+    /* Hamburger Button */
+    .hamburger {
         display: flex;
         flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 24px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+    }
+
+    .hamburger span {
         width: 100%;
-        gap: 15px;
-        padding: 15px 0;
+        height: 3px;
+        background: var(--white);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Mobile Nav - Hidden by default */
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        padding: 0;
         text-align: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        margin-top: 10px;
+        background: var(--bg-dark);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    nav.nav-open ul {
+        display: flex;
     }
 
     nav a {
         display: block;
-        padding: 10px;
-        font-size: 1.1rem;
+        padding: 15px 20px;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    nav a:hover {
+        background: rgba(43, 168, 187, 0.1);
     }
 
     .footer-container {
